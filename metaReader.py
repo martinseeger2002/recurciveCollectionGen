@@ -14,13 +14,16 @@ def read_metadata(image_path):
             base_image_resolution = metadata_dict.get("base_image_resolution", {})
             print(f"Base Image Resolution: {base_image_resolution}")
 
-            # Print image details
-            images = metadata_dict.get("images", {})
-            for filename, details in images.items():
-                trait = details.get("Trait", "Unknown")
-                x = details.get("x", "Unknown")
-                y = details.get("y", "Unknown")
-                print(f"{filename}, Trait: {trait}, Coordinates: (x: {x}, y: {y})")
+            # Print trait details
+            attributes = metadata_dict.get("attributes", {})
+            for trait_type, details in attributes.items():
+                print(f"Trait Type: {trait_type}")
+                for detail in details:
+                    value = detail.get("value", "Unknown")
+                    coordinates = detail.get("coordinates", {})
+                    x = coordinates.get("x", "Unknown")
+                    y = coordinates.get("y", "Unknown")
+                    print(f"  Value: {value}, Coordinates: (x: {x}, y: {y})")
         else:
             print("No metadata found in the image.")
 

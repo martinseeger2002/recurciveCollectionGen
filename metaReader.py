@@ -2,6 +2,9 @@ from PIL import Image, PngImagePlugin
 import json
 import os
 
+# Increase the maximum image size limit
+Image.MAX_IMAGE_PIXELS = None
+
 def read_metadata(image_path):
     with Image.open(image_path) as img:
         # Check if the image has metadata

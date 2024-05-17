@@ -2,9 +2,6 @@ from PIL import Image, PngImagePlugin
 import json
 import os
 
-# Increase the maximum image size limit
-Image.MAX_IMAGE_PIXELS = None
-
 def read_metadata(image_path):
     with Image.open(image_path) as img:
         # Check if the image has metadata
@@ -12,8 +9,18 @@ def read_metadata(image_path):
             metadata = img.info["Metadata"]
             metadata_dict = json.loads(metadata)
             print("Metadata found in the image:")
-            for filename, coords in metadata_dict.items():
-                print(f"File: {filename}, Coordinates: {coords}")
+
+            # Print base image resolution
+            base_image_resolution = metadata_dict.get("base_image_resolution", {})
+            print(f"Base Image Resolution: {base_image_resolution}")
+
+            # Print image details
+            images = metadata_dict.get("images", {})
+            for filename, details in images.items():
+                trait = details.get("Trait", "Unknown")
+                x = details.get("x", "Unknown")
+                y = details.get("y", "Unknown")
+                print(f"{filename}, Trait: {trait}, Coordinates: (x: {x}, y: {y})")
         else:
             print("No metadata found in the image.")
 

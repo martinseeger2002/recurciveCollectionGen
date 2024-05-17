@@ -13,7 +13,8 @@ def stitch_images(base_dir, output_path, rows, cols):
     # Metadata dictionary to store base image resolution and attributes
     metadata = {
         "base_image_resolution": {"width": img_size, "height": img_size},
-        "attributes": {}
+        "attributes": {},
+        "credit": "credit to @MartinSeeger2 on X"
     }
 
     # Get all folder paths starting with a number from 1 to the number of rows

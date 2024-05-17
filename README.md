@@ -21,9 +21,9 @@ pip install pillow
 
 ### Stitch Images with Metadata
 
-The `stitch_images.py` script stitches images from folders named `1` to `8` (or any folder with names starting with these digits) into an 8x8 grid and saves the resulting image with metadata.
+The `stitch_images.py` script stitches images from folders named the number of rows (or any folder with names starting with these digits) into a grid and saves the resulting image with metadata.
 
-1. Ensure your working directory contains the folders `1` to `8` with the images. (The first character of each folder name is used to determine the row in which the images should be placed.)
+1. Ensure your working directory contains the folders named the number of rows with the images. The first character of each folder name is used to determine the row in which the images should be placed. (eg. /1Background, /2backgroungTrait, /3Body, /4bodyTrait)
 2. Run the script:
 
 ```bash

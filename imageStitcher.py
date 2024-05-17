@@ -10,8 +10,11 @@ def stitch_images(base_dir, output_path, rows, cols):
     # Create a new blank image with transparent background
     final_image = Image.new("RGBA", (final_img_width, final_img_height), (0, 0, 0, 0))
 
-    # Metadata dictionary to store coordinates and filenames
-    metadata = {}
+    # Metadata dictionary to store coordinates, filenames without extensions, and base image resolution
+    metadata = {
+        "base_image_resolution": {"width": img_size, "height": img_size},
+        "images": {}
+    }
 
     # Get all folder paths starting with a number from 1 to the number of rows
     folder_paths = [os.path.join(base_dir, folder) for folder in os.listdir(base_dir) 
@@ -19,6 +22,8 @@ def stitch_images(base_dir, output_path, rows, cols):
     folder_paths.sort(key=lambda x: int(os.path.basename(x)[0]))  # Sort by first character
 
     for row, folder in enumerate(folder_paths):
+        folder_name = os.path.basename(folder)
+        folder_suffix = folder_name[1:]  # Remove the leading number index
         images = [f for f in os.listdir(folder) if f.endswith('.png')]
         images.sort()  # Ensure images are in order
 
@@ -29,8 +34,12 @@ def stitch_images(base_dir, output_path, rows, cols):
             img = Image.open(img_path).convert("RGBA")
             final_image.paste(img, (col * img_size, row * img_size), img)
             
-            # Store the metadata
-            metadata[img_name] = {"x": col * img_size, "y": row * img_size}
+            # Store the metadata with the folder suffix and coordinates
+            metadata["images"][os.path.splitext(img_name)[0]] = {
+                "Trait": folder_suffix,
+                "x": col * img_size,
+                "y": row * img_size
+            }
 
     # Add metadata to the final image
     meta = PngImagePlugin.PngInfo()
@@ -44,7 +53,7 @@ if __name__ == "__main__":
     output_path = os.path.join(base_dir, "stitched_image.png")
 
     # Define the number of rows and columns for the grid
-    rows = 3
+    rows = 8
     cols = 8
     
     stitch_images(base_dir, output_path, rows, cols)

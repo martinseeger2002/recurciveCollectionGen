@@ -43,7 +43,7 @@ The `read_metadata.py` script reads and prints the metadata from the `stitched_i
 python read_metadata.py
 ```
 
-The script will print the metadata, showing the filenames and their coordinates.
+The script will print the metadata, showing the trait type, trait name, and their coordinates.
 
 
 

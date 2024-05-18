@@ -3,7 +3,7 @@ import os
 import json
 
 def stitch_images(base_dir, output_path, rows, cols):
-    img_size = 1413
+    img_size = 103
     final_img_width = cols * img_size
     final_img_height = rows * img_size
 
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     output_path = os.path.join(base_dir, "stitched_image.png")
 
     # Define the number of rows and columns for the grid
-    rows = 8
-    cols = 8
+    rows = 3
+    cols = 6
     
     stitch_images(base_dir, output_path, rows, cols)

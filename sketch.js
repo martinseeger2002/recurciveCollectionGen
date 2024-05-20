@@ -7,7 +7,7 @@ let baseImageResolution = { width: 1413, height: 1413 }; // Default values
 
 function preload() {
     // Use a base64 image string here
-    let base64Image = 'data:image/png;base64,<Your Stiched Image in bace64>';
+    let base64Image = 'data:image/png;base64,<Your Stiched Image in base64>';
     console.log("Loading image from base64 string");
     img = loadImage(base64Image, () => extractMetadata(base64Image));
 }

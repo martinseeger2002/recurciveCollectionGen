@@ -34,13 +34,13 @@ The script will create a `stitched_image.png` file in the same directory with me
 
 ### Add Stitched Image to parent script.
 
-After stitching the images and generating the stitched_image.png with metadata, you need to incorporate this image in base64 format into the parent script and create a child HTML for inscription.
+After stitching the images and generating the stitched_image.png with metadata, you need to incorporate this image in base64 format into the parent script sketch.js and create the child HTMLs for inscription.
 
 Convert Stitched Image to Base64
 Convert the stitched_image.png to a base64 string. You can use online tools or a script to do this.
 
 Add Base64 Image to Parent Script
-Open the parentScript.js and replace <Your Stitched Image in base64> with the copied bace64 string.
+Open the parentScript.js and replace <Your Stitched Image in base64> with the copied base64 string.
 
 Replace <YourStitchedImageJSInscriptionID> with the inscription ID of the parent script containing the base64 image.
 

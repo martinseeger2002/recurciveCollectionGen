@@ -19,6 +19,10 @@ pip install pillow
 
 ## Usage
 
+imageStitcher.py and metaReader.py is for images with no # rarity index
+
+imageStitcherV2.py and metaReaderV2.py is for images with # rarity index
+
 ### Stitch Images with Metadata
 
 The `imageStitcher.py` script stitches images from folders named the number of rows (or any folder with names starting with these digits) into a grid and saves the resulting image with metadata.
